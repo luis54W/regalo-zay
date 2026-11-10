@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regalo Zay</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestro Aniversario</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Regalo Zay</h1>
+
+  <div class="stars"></div>
+  <div class="twinkling"></div>
+
+  <main class="collage-container">
+    <header class="title-card">
+      <h1>Nuestra Historia</h1>
+      <p>Un rincón para celebrar nuestros momentos</p>
+    </header>
+
+    <!-- Fotos del Collage -->
+    <div class="photo-card card-1">
+      <div class="photo-inner">
+        <img src="https://picsum.photos/id/1025/300/300" alt="Momento 1">
+        <span>Contigo siempre ❤️</span>
+      </div>
+    </div>
+
+    <div class="photo-card card-2">
+      <div class="photo-inner">
+        <img src="https://picsum.photos/id/64/300/300" alt="Momento 2">
+        <span>Risas inolvidables</span>
+      </div>
+    </div>
+
+    <div class="photo-card card-3">
+      <div class="photo-inner">
+        <img src="https://picsum.photos/id/338/300/300" alt="Momento 3">
+        <span>Nuestros viajes</span>
+      </div>
+    </div>
+
+    <div class="photo-card card-4">
+      <div class="photo-inner">
+        <img src="https://picsum.photos/id/1062/300/300" alt="Momento 4">
+        <span>El mejor equipo</span>
+      </div>
+    </div>
+
+    <!-- Animación CSS Interactiva de Corazón -->
+    <div class="heart-container">
+      <div class="heart"></div>
+    </div>
+
+    <!-- Botón Sorpresa con CSS Puro (Checkbox Trick) -->
+    <div class="surprise-wrapper">
+      <input type="checkbox" id="surprise-toggle" hidden>
+      <label for="surprise-toggle" class="surprise-btn">
+        <span>¡Haz clic aquí! 🎁</span>
+      </label>
+      
+      <div class="message-card">
+        <div class="glow-bg"></div>
+        <h2 class="animated-text">Te amo, feliz aniversario Zayra</h2>
+        <div class="floating-mini-hearts">
+          <span>💖</span><span>💗</span><span>💕</span><span>✨</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
 </body>
 </html>
