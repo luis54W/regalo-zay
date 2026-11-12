@@ -60,17 +60,36 @@ body {
   z-index: 10;
 }
 
-.title-card h1 {
-  font-size: 2.8rem;
+/* Título más grande con animación cada 5 segundos */
+.title-card h1.animated-title {
+  font-size: 3.6rem;
   background: linear-gradient(45deg, #ff99ac, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
+  animation: floatTitle 5s infinite ease-in-out;
+  display: inline-block;
+}
+
+@keyframes floatTitle {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-1.5deg) scale(1.03);
+  }
+  50% {
+    transform: translateY(0) scale(1);
+  }
+  75% {
+    transform: translateY(-6px) rotate(1.5deg) scale(1.02);
+  }
 }
 
 .title-card p {
   color: #ddd;
   font-size: 1.1rem;
+  margin-top: 0.5rem;
 }
 
 /* Grilla del Collage */
@@ -128,6 +147,12 @@ body {
   height: 220px;
   object-fit: cover;
   border-radius: 3px;
+  background-color: #f7f7f7;
+}
+
+/* Ajuste específico para mostrar fotos completas sin zoom en imágenes indicadas */
+.fit-contain .flip-card-front img {
+  object-fit: contain;
 }
 
 .flip-card-front span {
@@ -204,7 +229,7 @@ body {
    ANIMACIONES ESPECÍFICAS CADA 5 FOTOS
    ============================================== */
 
-/* 1. Animación con Corazones (1-5 y 16-19) */
+/* 1. Animación con Corazones */
 .anim-heart::before,
 .anim-heart::after {
   position: absolute;
@@ -235,7 +260,7 @@ body {
   100% { transform: translateY(-30px) scale(1.2); opacity: 0; }
 }
 
-/* 2. Animación con Gatitos (6-10) */
+/* 2. Animación con Gatitos */
 .anim-cat::before,
 .anim-cat::after {
   position: absolute;
@@ -266,7 +291,7 @@ body {
   100% { transform: translateY(-30px) rotate(-10deg); opacity: 0; }
 }
 
-/* 3. Animación con Frappés (11-15) */
+/* 3. Animación con Frappés */
 .anim-frappe::before,
 .anim-frappe::after {
   position: absolute;
@@ -338,7 +363,9 @@ body {
   50% { transform: rotate(-45deg) scale(1.2); }
 }
 
-/* Botón e Interacción Mensaje Sorpresa */
+/* ==============================================
+   BOTÓN INTERACTIVO Y MENSAJE SORPRESA
+   ============================================== */
 .surprise-wrapper {
   margin-top: 1rem;
   display: flex;
@@ -357,11 +384,16 @@ body {
   cursor: pointer;
   box-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
   transition: transform 0.3s, box-shadow 0.3s;
+  user-select: none;
 }
 
 .surprise-btn:hover {
   transform: scale(1.08);
   box-shadow: 0 0 35px rgba(255, 51, 102, 0.9);
+}
+
+.surprise-btn .btn-text-hide {
+  display: none;
 }
 
 .message-card {
@@ -371,45 +403,62 @@ body {
   transform: scale(0.5);
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   margin-top: 1.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
+  max-width: 800px;
+  padding: 0 2rem;
 }
 
+/* Abrir y ocultar mensaje al hacer clic en el botón */
 #surprise-toggle:checked ~ .message-card {
   opacity: 1;
-  max-height: 300px;
+  max-height: 600px;
   transform: scale(1);
   padding: 2.5rem;
 }
 
-#surprise-toggle:checked ~ .surprise-btn {
+#surprise-toggle:checked ~ .surprise-btn .btn-text-show {
   display: none;
 }
 
+#surprise-toggle:checked ~ .surprise-btn .btn-text-hide {
+  display: inline;
+}
+
 .animated-text {
-  font-size: 2rem;
-  background: linear-gradient(90deg, #ff99ac, #fff, #ff3366);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shine 3s linear infinite;
+  font-size: 1.3rem;
+  line-height: 1.7;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 153, 172, 0.8);
+  font-weight: 500;
+  font-family: 'Segoe UI', Georgia, sans-serif;
 }
 
-.floating-mini-hearts span {
+/* Fuegos artificiales, globos y corazones flotantes */
+.celebration-effects {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.celebration-effects span {
   display: inline-block;
-  font-size: 1.5rem;
-  margin: 10px 5px 0 5px;
-  animation: floatUp 2s infinite ease-in-out;
+  animation: floatUpCelebration 2.5s infinite ease-in-out;
 }
 
-@keyframes shine {
-  to { background-position: 200% center; }
+.celebration-effects span:nth-child(2n) {
+  animation-delay: 0.5s;
 }
 
-@keyframes floatUp {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+.celebration-effects span:nth-child(3n) {
+  animation-delay: 1s;
+}
+
+@keyframes floatUpCelebration {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.2); }
 }
