@@ -9,49 +9,275 @@
 <body>
 
   <div class="stars"></div>
-  <div class="twinkling"></div>
 
   <main class="collage-container">
     <header class="title-card">
       <h1>Nuestra Historia</h1>
-      <p>Un rincón para celebrar nuestros momentos</p>
+      <p>Haz clic en cada fotografía para descubrir un mensaje especial ✨</p>
     </header>
 
-    <!-- Fotos del Collage -->
-    <div class="photo-card card-1">
-      <div class="photo-inner">
-        <img src="https://picsum.photos/id/1025/300/300" alt="Momento 1">
-        <span>Contigo siempre ❤️</span>
+    <!-- Galería Collage (19 fotos interactivas) -->
+    <div class="collage-grid">
+      
+      <!-- Bloque 1 (1 a 5): Corazones -->
+      <div class="photo-card anim-heart card-1">
+        <input type="checkbox" id="flip-1" class="flip-toggle" hidden>
+        <label for="flip-1" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="4c4b55e9.jpeg" alt="Foto 1">
+            <span>Nuestros momentos ❤️</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Cada segundo a tu lado se convierte en el recuerdo más valioso de mi vida."</p>
+          </div>
+        </label>
       </div>
+
+      <div class="photo-card anim-heart card-2">
+        <input type="checkbox" id="flip-2" class="flip-toggle" hidden>
+        <label for="flip-2" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="cuerna_2_2.jpeg" alt="Foto 2">
+            <span>Sonrisas juntos ✨</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Tu sonrisa ilumina incluso mis días más oscuros; eres mi sol constante."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-3">
+        <input type="checkbox" id="flip-3" class="flip-toggle" hidden>
+        <label for="flip-3" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="dinamos_3.jpg" alt="Foto 3">
+            <span>Días de aventura ☀️</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Explorar el mundo de tu mano hace que cualquier camino sea perfecto."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-4">
+        <input type="checkbox" id="flip-4" class="flip-toggle" hidden>
+        <label for="flip-4" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="dinamos_5.jpg" alt="Foto 4">
+            <span>Disfrutando la vida 🌊</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Contigo aprendí que la felicidad está en los detalles más sencillos."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-5">
+        <input type="checkbox" id="flip-5" class="flip-toggle" hidden>
+        <label for="flip-5" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="graduacion.jpg" alt="Foto 5">
+            <span>Momentos especiales 🎓</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Celebrar tus logros es ver florecer todos los sueños por los que tanto luchas."</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Bloque 2 (6 a 10): Gatitos -->
+      <div class="photo-card anim-cat card-6">
+        <input type="checkbox" id="flip-6" class="flip-toggle" hidden>
+        <label for="flip-6" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="halloween2025.jpeg" alt="Foto 6">
+            <span>Halloween 🎃</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"No hay misterio ni disfraz que oculte lo mucho que te amo."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-cat card-7">
+        <input type="checkbox" id="flip-7" class="flip-toggle" hidden>
+        <label for="flip-7" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="1ra-foto_2.jpeg" alt="Foto 7">
+            <span>Donde todo empezó 💫</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Aquí comenzó la mejor historia de mi vida: nuestra historia juntos."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-cat card-8">
+        <input type="checkbox" id="flip-8" class="flip-toggle" hidden>
+        <label for="flip-8" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="acdc_2_2.jpeg" alt="Foto 8">
+            <span>Inolvidable 🔥</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"A tu lado cada instante se vuelve una chispa eterna de pasión y alegría."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-cat card-9">
+        <input type="checkbox" id="flip-9" class="flip-toggle" hidden>
+        <label for="flip-9" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="6a5fdf77.jpeg" alt="Foto 9">
+            <span>Bajo el mar 🐠</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"En el océano infinito de tus ojos siempre encuentro tranquilidad."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-cat card-10">
+        <input type="checkbox" id="flip-10" class="flip-toggle" hidden>
+        <label for="flip-10" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="acuario_2_2.jpeg" alt="Foto 10">
+            <span>Juntos siempre 💙</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Prometo sostenerme de tu mano sin importar el lugar ni el tiempo."</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Bloque 3 (11 a 15): Frappés -->
+      <div class="photo-card anim-frappe card-11">
+        <input type="checkbox" id="flip-11" class="flip-toggle" hidden>
+        <label for="flip-11" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="toluca.jpeg" alt="Foto 11">
+            <span>Paseos especiales 🌿</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Cualquier destino se vuelve mágico si la compañía eres tú."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-frappe card-12">
+        <input type="checkbox" id="flip-12" class="flip-toggle" hidden>
+        <label for="flip-12" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="toluca_2.jpeg" alt="Foto 12">
+            <span>Naturaleza y amor 🌸</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Tu dulzura florece en cada abrazo que me das."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-frappe card-13">
+        <input type="checkbox" id="flip-13" class="flip-toggle" hidden>
+        <label for="flip-13" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="halloween2025_2.jpeg" alt="Foto 13">
+            <span>Cómplices siempre 🖤</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Tu complicidad es el tesoro más bonito que cuido en mi corazón."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-frappe card-14">
+        <input type="checkbox" id="flip-14" class="flip-toggle" hidden>
+        <label for="flip-14" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="halloween2026.jpeg" alt="Foto 14">
+            <span>Disfraces y risas 👑</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Eres la reina absoluta de mis pensamientos y el amor de mi vida."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-frappe card-15">
+        <input type="checkbox" id="flip-15" class="flip-toggle" hidden>
+        <label for="flip-15" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="halloween2026_2.jpeg" alt="Foto 15">
+            <span>Amor infinito 💖</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Mi amor por ti trasciende cualquier palabra que intente explicarlo."</p>
+          </div>
+        </label>
+      </div>
+
+      <!-- Bloque 4 (16 a 19): Corazones -->
+      <div class="photo-card anim-heart card-16">
+        <input type="checkbox" id="flip-16" class="flip-toggle" hidden>
+        <label for="flip-16" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="kanoa.jpeg" alt="Foto 16">
+            <span>Remando juntos 🚣‍♂️</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Remar hacia el mismo rumbo contigo es mi travesía favorita."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-17">
+        <input type="checkbox" id="flip-17" class="flip-toggle" hidden>
+        <label for="flip-17" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="six-flags.jpeg" alt="Foto 17">
+            <span>Día de parque 🎢</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"La mayor aventura de todas es despertar cada día sabiendo que te tengo."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-18">
+        <input type="checkbox" id="flip-18" class="flip-toggle" hidden>
+        <label for="flip-18" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="tepoz.jpeg" alt="Foto 18">
+            <span>Vistas hermosas ⛰️</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Por más alta que sea la montaña, contigo a mi lado conquistaré el universo."</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="photo-card anim-heart card-19">
+        <input type="checkbox" id="flip-19" class="flip-toggle" hidden>
+        <label for="flip-19" class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="zay.jpeg" alt="Foto 19">
+            <span>La más hermosa ✨</span>
+          </div>
+          <div class="flip-card-back">
+            <p class="love-text">"Eres el destino perfecto donde siempre quiero quedarme."</p>
+          </div>
+        </label>
+      </div>
+
     </div>
 
-    <div class="photo-card card-2">
-      <div class="photo-inner">
-        <img src="https://picsum.photos/id/64/300/300" alt="Momento 2">
-        <span>Risas inolvidables</span>
-      </div>
-    </div>
-
-    <div class="photo-card card-3">
-      <div class="photo-inner">
-        <img src="https://picsum.photos/id/338/300/300" alt="Momento 3">
-        <span>Nuestros viajes</span>
-      </div>
-    </div>
-
-    <div class="photo-card card-4">
-      <div class="photo-inner">
-        <img src="https://picsum.photos/id/1062/300/300" alt="Momento 4">
-        <span>El mejor equipo</span>
-      </div>
-    </div>
-
-    <!-- Animación CSS Interactiva de Corazón -->
+    <!-- Corazón Central -->
     <div class="heart-container">
       <div class="heart"></div>
     </div>
 
-    <!-- Botón Sorpresa con CSS Puro (Checkbox Trick) -->
+    <!-- Botón Sorpresa con CSS Puro -->
     <div class="surprise-wrapper">
       <input type="checkbox" id="surprise-toggle" hidden>
       <label for="surprise-toggle" class="surprise-btn">
@@ -59,7 +285,6 @@
       </label>
       
       <div class="message-card">
-        <div class="glow-bg"></div>
         <h2 class="animated-text">Te amo, feliz aniversario Zayra</h2>
         <div class="floating-mini-hearts">
           <span>💖</span><span>💗</span><span>💕</span><span>✨</span>

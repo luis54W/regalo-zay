@@ -1,4 +1,4 @@
-/* Reseteo básico y variables */
+/* Reseteo y variables */
 :root {
   --primary-color: #ff3366;
   --accent-color: #ff99ac;
@@ -23,14 +23,11 @@ body {
 }
 
 /* Fondo con efecto de destellos */
-.stars, .twinkling {
-  position: absolute;
+.stars {
+  position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   width: 100%; height: 100%;
   pointer-events: none;
-}
-
-.stars {
   background: radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
               radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
               radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0));
@@ -41,38 +38,34 @@ body {
 }
 
 @keyframes sparkle {
-  0% { opacity: 0.3; }
+  0%, 100% { opacity: 0.3; }
   50% { opacity: 0.8; }
-  100% { opacity: 0.3; }
 }
 
-/* Contenedor Principal Collage */
+/* Contenedor Principal */
 .collage-container {
   position: relative;
-  width: 90%;
-  max-width: 1000px;
-  min-height: 85vh;
-  padding: 2rem;
+  width: 95%;
+  max-width: 1300px;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 }
 
 /* Encabezado */
 .title-card {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   z-index: 10;
-  animation: fadeInDown 1.2s ease-out;
 }
 
 .title-card h1 {
   font-size: 2.8rem;
-  text-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
   background: linear-gradient(45deg, #ff99ac, #ffffff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 51, 102, 0.4);
 }
 
 .title-card p {
@@ -80,77 +73,239 @@ body {
   font-size: 1.1rem;
 }
 
-/* Tarjetas Polaroid del Collage */
-.photo-card {
-  position: absolute;
-  width: 200px;
-  background: #fff;
-  padding: 10px 10px 20px 10px;
-  border-radius: 4px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 2;
-  animation: float 6s ease-in-out infinite alternate;
+/* Grilla del Collage */
+.collage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
 
-.photo-inner {
+/* ==============================================
+   ESTRUCTURA Y ANIMACIÓN FLIP 3D EN LAS FOTOS
+   ============================================== */
+.photo-card {
+  position: relative;
+  perspective: 1000px;
+  animation: floatCard 5s ease-in-out infinite alternate;
+}
+
+.flip-card-inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+  background: #fff;
+  padding: 10px 10px 20px 10px;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* Efecto al hacer clic en la foto */
+.flip-toggle:checked + .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 3px;
+}
+
+.flip-card-front {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.photo-card img {
+.flip-card-front img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
-.photo-card span {
+.flip-card-front span {
   color: #333;
-  font-size: 0.85rem;
-  margin-top: 10px;
+  font-size: 0.9rem;
+  margin-top: 12px;
   font-weight: 600;
 }
 
-/* Posicionamiento y Rotación Collage */
-.card-1 {
-  top: 15%;
-  left: 5%;
-  transform: rotate(-12deg);
+/* Reverso con mensaje romántico */
+.flip-card-back {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #ff3366, #302b63);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem;
+  border-radius: 6px;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.4);
+}
+
+/* Texto en Cursiva con Animación Tenue */
+.love-text {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 153, 172, 0.8);
+  animation: glowText 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes glowText {
+  0% {
+    opacity: 0.7;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 12px rgba(255, 153, 172, 0.9), 0 0 20px rgba(255, 51, 102, 0.6);
+  }
+}
+
+/* Rotaciones dinámicas */
+.card-1 { transform: rotate(-5deg); animation-delay: 0s; }
+.card-2 { transform: rotate(4deg); animation-delay: 0.3s; }
+.card-3 { transform: rotate(-3deg); animation-delay: 0.6s; }
+.card-4 { transform: rotate(6deg); animation-delay: 0.9s; }
+.card-5 { transform: rotate(-4deg); animation-delay: 1.2s; }
+.card-6 { transform: rotate(5deg); animation-delay: 1.5s; }
+.card-7 { transform: rotate(-6deg); animation-delay: 1.8s; }
+.card-8 { transform: rotate(3deg); animation-delay: 2.1s; }
+.card-9 { transform: rotate(-4deg); animation-delay: 2.4s; }
+.card-10 { transform: rotate(5deg); animation-delay: 2.7s; }
+.card-11 { transform: rotate(-5deg); animation-delay: 3.0s; }
+.card-12 { transform: rotate(4deg); animation-delay: 3.3s; }
+.card-13 { transform: rotate(-3deg); animation-delay: 3.6s; }
+.card-14 { transform: rotate(6deg); animation-delay: 3.9s; }
+.card-15 { transform: rotate(-4deg); animation-delay: 4.2s; }
+.card-16 { transform: rotate(5deg); animation-delay: 4.5s; }
+.card-17 { transform: rotate(-6deg); animation-delay: 4.8s; }
+.card-18 { transform: rotate(3deg); animation-delay: 5.1s; }
+.card-19 { transform: rotate(-4deg); animation-delay: 5.4s; }
+
+.photo-card:hover {
+  z-index: 20;
+}
+
+/* ==============================================
+   ANIMACIONES ESPECÍFICAS CADA 5 FOTOS
+   ============================================== */
+
+/* 1. Animación con Corazones (1-5 y 16-19) */
+.anim-heart::before,
+.anim-heart::after {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  animation: floatHeart 3s infinite ease-out;
+  z-index: 30;
+}
+
+.anim-heart::before {
+  content: "💖";
+  top: -10px;
+  left: 10px;
   animation-delay: 0s;
 }
 
-.card-2 {
-  top: 12%;
-  right: 5%;
-  transform: rotate(10deg);
+.anim-heart::after {
+  content: "💕";
+  bottom: 10px;
+  right: -5px;
   animation-delay: 1.5s;
 }
 
-.card-3 {
-  bottom: 25%;
-  left: 8%;
-  transform: rotate(8deg);
-  animation-delay: 3s;
+@keyframes floatHeart {
+  0% { transform: translateY(0) scale(0.6); opacity: 0; }
+  50% { opacity: 0.9; }
+  100% { transform: translateY(-30px) scale(1.2); opacity: 0; }
 }
 
-.card-4 {
-  bottom: 22%;
-  right: 8%;
-  transform: rotate(-15deg);
-  animation-delay: 4.5s;
+/* 2. Animación con Gatitos (6-10) */
+.anim-cat::before,
+.anim-cat::after {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  animation: floatCat 3.5s infinite ease-in-out;
+  z-index: 30;
 }
 
-.photo-card:hover {
-  transform: scale(1.15) rotate(0deg) !important;
-  z-index: 20;
-  box-shadow: 0 15px 35px rgba(255, 51, 102, 0.4);
+.anim-cat::before {
+  content: "🐱";
+  top: -12px;
+  right: 10px;
+  animation-delay: 0.5s;
 }
 
-/* Corazón central latiendo */
+.anim-cat::after {
+  content: "🐾";
+  bottom: -10px;
+  left: 10px;
+  animation-delay: 2s;
+}
+
+@keyframes floatCat {
+  0% { transform: translateY(0) rotate(-10deg); opacity: 0; }
+  50% { opacity: 1; transform: translateY(-15px) rotate(10deg); }
+  100% { transform: translateY(-30px) rotate(-10deg); opacity: 0; }
+}
+
+/* 3. Animación con Frappés (11-15) */
+.anim-frappe::before,
+.anim-frappe::after {
+  position: absolute;
+  font-size: 1.4rem;
+  opacity: 0;
+  pointer-events: none;
+  animation: floatFrappe 3s infinite ease-in-out;
+  z-index: 30;
+}
+
+.anim-frappe::before {
+  content: "🥤";
+  top: -10px;
+  left: 15px;
+  animation-delay: 0.2s;
+}
+
+.anim-frappe::after {
+  content: "🧋";
+  bottom: -10px;
+  right: 15px;
+  animation-delay: 1.7s;
+}
+
+@keyframes floatFrappe {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  50% { opacity: 1; transform: translateY(-20px) rotate(15deg); }
+  100% { transform: translateY(-35px) rotate(-15deg); opacity: 0; }
+}
+
+/* Animación de flotación general */
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-10px); }
+}
+
+/* Corazón Central */
 .heart-container {
-  margin: 3rem 0;
+  margin: 2rem 0;
   z-index: 5;
 }
 
@@ -160,11 +315,10 @@ body {
   height: 50px;
   margin: 0 10px;
   position: relative;
-  top: 0;
   transform: rotate(-45deg);
   width: 50px;
   animation: pulse 1.2s infinite;
-  box-shadow: 0 0 40px var(--primary-color);
+  box-shadow: 0 0 35px var(--primary-color);
 }
 
 .heart:before, .heart:after {
@@ -176,19 +330,17 @@ body {
   width: 50px;
 }
 
-.heart:before {
-  top: -25px;
-  left: 0;
+.heart:before { top: -25px; left: 0; }
+.heart:after { left: 25px; top: 0; }
+
+@keyframes pulse {
+  0%, 100% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.2); }
 }
 
-.heart:after {
-  left: 25px;
-  top: 0;
-}
-
-/* Botón e Interacción del Mensaje Sorpresa */
+/* Botón e Interacción Mensaje Sorpresa */
 .surprise-wrapper {
-  margin-top: auto;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -205,7 +357,6 @@ body {
   cursor: pointer;
   box-shadow: 0 0 25px rgba(255, 51, 102, 0.6);
   transition: transform 0.3s, box-shadow 0.3s;
-  animation: glow 2s infinite alternate;
 }
 
 .surprise-btn:hover {
@@ -213,21 +364,18 @@ body {
   box-shadow: 0 0 35px rgba(255, 51, 102, 0.9);
 }
 
-/* Revelado con Checkbox */
 .message-card {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
   transform: scale(0.5);
   transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
-  padding: 0;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-align: center;
-  position: relative;
 }
 
 #surprise-toggle:checked ~ .message-card {
@@ -250,33 +398,11 @@ body {
   animation: shine 3s linear infinite;
 }
 
-/* Emojis flotantes al abrir */
 .floating-mini-hearts span {
   display: inline-block;
   font-size: 1.5rem;
   margin: 10px 5px 0 5px;
   animation: floatUp 2s infinite ease-in-out;
-}
-
-.floating-mini-hearts span:nth-child(2) { animation-delay: 0.3s; }
-.floating-mini-hearts span:nth-child(3) { animation-delay: 0.6s; }
-.floating-mini-hearts span:nth-child(4) { animation-delay: 0.9s; }
-
-/* Keyframes para Animaciones */
-@keyframes pulse {
-  0% { transform: rotate(-45deg) scale(1); }
-  50% { transform: rotate(-45deg) scale(1.2); }
-  100% { transform: rotate(-45deg) scale(1); }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px) rotate(var(--rot, 0deg)); }
-  100% { transform: translateY(-15px) rotate(var(--rot, 0deg)); }
-}
-
-@keyframes glow {
-  0% { box-shadow: 0 0 15px rgba(255, 51, 102, 0.5); }
-  100% { box-shadow: 0 0 30px rgba(255, 51, 102, 0.9); }
 }
 
 @keyframes shine {
@@ -286,29 +412,4 @@ body {
 @keyframes floatUp {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 768px) {
-  .photo-card {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: 1rem 0;
-  }
-  
-  .collage-container {
-    height: auto;
-  }
-  
-  .animated-text {
-    font-size: 1.5rem;
-  }
 }
